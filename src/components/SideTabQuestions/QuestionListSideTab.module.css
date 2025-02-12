@@ -1,0 +1,25 @@
+.darkBackground {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100vmax;
+  height: 100vmax;
+}
+
+.menu {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  padding-right: 50px;
+  height: 100vh;
+  overflow-y: scroll;
+  left: 0px;
+  top: 0px;
+  gap: 6px;
+  background-color: white;
+}
+
+.menu h2 {
+  margin-left: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,21 @@
+.summoner {
+  position: fixed;
+  left: 5px;
+  top: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  width: 50px;
+  height: 50px;
+  z-index: 9;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border: none;
+  cursor: pointer;
+}
+
+.blackLine {
+  width: 35px;
+  background-color: black;
+  height: 4px;
+}

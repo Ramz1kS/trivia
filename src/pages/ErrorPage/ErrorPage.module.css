@@ -1,0 +1,24 @@
+@keyframes fadeInFadeOut {
+  0% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 20%;
+  }
+  100% {
+    opacity: 100%; 
+  }
+}
+
+.pageCanvas {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loadingText {
+  animation: fadeInFadeOut 0.4s 3 linear;
+}

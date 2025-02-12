@@ -1,0 +1,45 @@
+.pageCanvas {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+  align-items: center;
+}
+
+.countAndFinisher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.choice {
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.questionText {
+  text-align: center;
+}
+
+.next {
+  position: absolute;
+  bottom: 12px;
+  width: 185px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D9D9D9;
+}
+
+.countContainer {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+}

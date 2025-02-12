@@ -1,0 +1,12 @@
+.startButton {
+  width: 292px;
+  min-height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #D9D9D9;
+  cursor: pointer;
+  @media (max-width: 655px) {
+    align-self: center;
+  }
+}

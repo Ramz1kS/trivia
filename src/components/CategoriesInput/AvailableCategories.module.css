@@ -1,0 +1,18 @@
+.fittingCategories {
+  width: 100%;
+  background-color: white;
+  max-height: 300px;
+  overflow-y: scroll;
+  position: absolute;
+  border: 1px solid black
+}
+
+.selectableCategory {
+  border: 1px solid black;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.selectableCategory:hover {
+  background-color: #D9D9D9;
+}
