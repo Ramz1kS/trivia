@@ -1,18 +1,34 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import classes from './ButtonStartingPage.module.css'
+import { motion } from 'motion/react'
 
 interface ButtonStartingPageProps {
-  children: React.ReactNode
+  children: React.ReactNode;
+  delay: number
 }
 
-const ButtonStartingPage: FC<ButtonStartingPageProps> = ({children}) => {
+const ButtonStartingPage: FC<ButtonStartingPageProps> = ({children, delay}) => {
+  const [isClicked, setIsClicked] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
   return (
-    <div className={classes.button}>
-      <div className={classes.upperSide}>
+    <motion.div
+    onMouseDown={() => setIsClicked(true)}
+    onMouseUp={() => setIsClicked(false)}
+    onHoverStart={() => setIsHovered(true)}
+    onHoverEnd={() => setIsHovered(false)}
+    className={classes.button}>
+      <motion.div
+      initial={{backgroundColor: "#FFFFFF"}}
+      className={classes.upperSide}>
         {children}
-      </div>
-      <div className={classes.lowerSide}></div>
-    </div>
+      </motion.div>
+      <motion.div
+      initial={{height: 0}}
+      // TODO: whileTap работает некорректно
+      transition={{duration: 0.2}}
+      animate={{height: isClicked ? 5 : isHovered ? 40 : 25}}
+      className={classes.lowerSide}></motion.div>
+    </motion.div>
   )
 }
 

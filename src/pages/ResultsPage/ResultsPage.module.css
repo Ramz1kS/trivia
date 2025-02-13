@@ -6,3 +6,8 @@
   justify-content: space-evenly;
   align-items: center;
 }
+
+.laughing {
+  position: static;
+  width: 400px;
+}

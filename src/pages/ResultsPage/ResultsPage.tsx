@@ -2,14 +2,17 @@ import React, { FC, useEffect, useState } from 'react'
 import classes from './ResultsPage.module.css'
 import { useParams } from 'react-router-dom'
 import TryAgainButton from '../../components/TryAgainButton/TryAgainButton'
+import laughingEmoji from '../../assets/laughing.png'
+import monke from '../../assets/cheater.png'
+import { motion } from 'motion/react'
 
 const ResultsPage = () => {
   const {rightCount, totalCount} = useParams() // Потом, возможно, переделать под localStorage? Короче, нужно защитить эти данные
   const [message, setMessage] = useState("")
+  const percentage = Number(rightCount) / Number(totalCount) * 100
   useEffect(() => {
-    const percentage = Number(rightCount) / Number(totalCount) * 100
     if (percentage > 100)
-      setMessage("Hey! You're cheating!!!")
+      setMessage("ok now why in the WORLD would you cheat here bruh. smartass. thats you btw")
     else if (percentage == 100)
       setMessage("You got them all right! Incredible!")
     else if (percentage >= 75)
@@ -25,12 +28,31 @@ const ResultsPage = () => {
   }, [])
   return (
     <div className={classes.pageCanvas}>
-      <h2>No more questions {":)"}</h2>
+      <motion.h2
+      initial={{opacity: 0, y: 100}}
+      animate={{opacity: 1, y: 0}}>No more questions {":)"}</motion.h2>
       <div className={classes.results}>
-        <h1>Right answers: {rightCount}</h1>
-        <h1>Wrong answers: {Number(totalCount) - Number(rightCount)}</h1>
+        <motion.h1
+        initial={{opacity: 0, x: -100}}
+        animate={{opacity: 1, x: 0}}
+        transition={{delay: 0.4}}>Right answers: {rightCount}</motion.h1>
+        <motion.h1
+        initial={{opacity: 0, x: -100}}
+        animate={{opacity: 1, x: 0}}
+        transition={{delay: 0.8}}>Wrong answers: {Number(totalCount) - Number(rightCount)}</motion.h1>
       </div>
-      <h3>{message}</h3>
+      <motion.h3
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{delay: 1.2}}>{message}</motion.h3>
+      { percentage == 0 || percentage > 100 ? 
+      <motion.img
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{duration: 1, delay: 2}}
+      src={percentage == 0 ? laughingEmoji : monke}
+      className={classes.laughing}>
+      </motion.img> : null }
       <TryAgainButton></TryAgainButton>
     </div>
   )
