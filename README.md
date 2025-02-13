@@ -3,11 +3,13 @@
 React App that lets you test your knowledge in various quizes
 
 ## TODO
-- Fancy animations
-- Maybe some refactoring
 - uhhhhhh I don't know
 
 ## Changelogs
+
+### version 2
+- Animations added!
+- Some funnies on results page if you get 0 right answers or too many right answers
 
 ### version 1
 First version of this app. It works
