@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import classes from './QuestionPage.module.css'
+import { motion } from 'motion/react';
 import { question } from '../../types';
 import ButtonQuestion from '../../components/ButtonQuestionAnswer/ButtonQuestion';
 import ButtonQuestionSwitch from '../../components/ButtonQuestionSwitch/ButtonQuestionSwitch';
@@ -42,19 +43,24 @@ const QuestionPage: FC<QuestionPageProps> = ({totalCount, questions}) => {
     setQuestionNumber={setCurrQuestion}
     currentQuestion={currQuestion}
     rightAnswers={rightAnswersCount}></SideTabQuestions>
-    <div className={classes.pageCanvas}>
+    <motion.div 
+    layout
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    className={classes.pageCanvas}>
       <div className={classes.countAndFinisher}>
         <div className={classes.countContainer}>
           <ButtonQuestionSwitch isNext={false} setNumber={setCurrQuestion} notActive={currQuestion == 1}></ButtonQuestionSwitch>
           <h2>Queston {currQuestion}/{totalCount}</h2>
           <ButtonQuestionSwitch isNext={true} setNumber={setCurrQuestion} notActive={currQuestion == totalCount}></ButtonQuestionSwitch>
         </div>
-        <div style={{display: answeredCount == totalCount ? "block" : "none"}}>
-          <QuizFinisher rightAnswers={rightAnswersCount} totalCount={totalCount}></QuizFinisher>
+        <div>
+          <QuizFinisher isNeeded={answeredCount == totalCount} rightAnswers={rightAnswersCount} totalCount={totalCount}></QuizFinisher>
         </div>
       </div>
       <h1 className={classes.questionText}>{decodeURIComponent(questions[currQuestion - 1].question)}</h1>
-      <div className={classes.choice}>
+      <motion.div
+      className={classes.choice}>
         {answers.map((item, index) => 
         <ButtonQuestion 
         key={index}
@@ -64,11 +70,12 @@ const QuestionPage: FC<QuestionPageProps> = ({totalCount, questions}) => {
         isSelected={selectedAnswers[currQuestion - 1] == item}
         questionNumber={currQuestion}
         setSelectedAnswers={setSelectedAnswers}
-        text={item}>
+        text={item}
+        delay={index * 0.1}>
           <h2>{decodeURIComponent(item)}</h2>
         </ButtonQuestion>)}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
     </>
   )
 }

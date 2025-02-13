@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import classes from './SettingsList.module.css'
 import CategoriesInput from '../CategoriesInput/CategoriesInput'
 import NumberInput from '../NumberInput/NumberInput'
-import ButtonsInput from '../ButtonsInput/ButtonsInput'
+import ButtonsInput from '../ButtonsInput/ButtonsInputList'
+import { motion } from "motion/react"
 
 interface SettingsListProps {
   questionCount: number;
@@ -35,7 +36,11 @@ const SettingsList: React.FC<SettingsListProps> = ({
     "any": "any"
   }
   return (
-    <div className={classes.settings}>
+    <motion.div
+    initial={{x: -500, opacity: 0}}
+    animate={{x: 0, opacity: 1}}
+    transition={{duration: 0.3, delay: 0.2}} 
+    className={classes.settings}>
       <NumberInput value={questionCount} setValue={setQuestionCount}></NumberInput>
       <CategoriesInput setCategoryId={setCategoryId}></CategoriesInput>
       <ButtonsInput 
@@ -50,7 +55,7 @@ const SettingsList: React.FC<SettingsListProps> = ({
         currentSelection={currType}
         setFunc={setCurrType}
       ></ButtonsInput>
-    </div>
+    </motion.div>
   )
 }
 

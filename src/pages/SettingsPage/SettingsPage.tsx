@@ -3,6 +3,8 @@ import classes from './SettingsPage.module.css'
 import SettingsList from '../../components/SettingsList/SettingsList'
 import { useParams } from 'react-router-dom'
 import StartButton from '../../components/StartButton/StartButton'
+import { motion } from "motion/react"
+import ErrorMessageSettings from '../../components/ErrorMessageSettings/ErrorMessageSettings'
 
 
 const SettingsPage: FC = () => {
@@ -19,7 +21,13 @@ const SettingsPage: FC = () => {
   const [showCategoryError, setShowCategoryError] = useState(false)
   return (
     <div className={classes.pageCanvas}>
-      <h1 className={classes.pleaseConfigure}>{isFirstVisit ? "Great! In that case please customize your question pool" : "Please customize your question pool"}</h1>
+      <motion.h1
+        initial={{x: -500, opacity: 0}}
+        animate={{x: 0, opacity: 1}}
+        transition={{duration: 0.3}}
+        className={classes.pleaseConfigure}>
+        {isFirstVisit ? "Great! In that case please customize your question pool" : "Please customize your question pool"}
+      </motion.h1>
       <SettingsList
       questionCount={questionCount}
       setQuestionCount={setQuestionCount}
@@ -32,8 +40,8 @@ const SettingsPage: FC = () => {
       ></SettingsList>
       <div className={classes.buttonMessagesContainer}>
         <div>
-          <h3 style={{display: showCountError ? "block" : "none"}}>Number of questions should be in range of 10 and 50</h3>
-          <h3 style={{display: showCategoryError ? "block" : "none"}}>Category not found</h3>
+          <ErrorMessageSettings shouldShow={showCountError}>Number of questions should be in range of 10 and 50</ErrorMessageSettings>
+          <ErrorMessageSettings shouldShow={showCategoryError}>Category not found</ErrorMessageSettings>
         </div>
         <StartButton
         questionCount={questionCount}
