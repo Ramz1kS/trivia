@@ -2,6 +2,12 @@
 
 React App that lets you test your knowledge in various quizes
 
+## Screenshots
+![settings](./screenshots/settings.png)
+![question](./screenshots/question.png)
+![question_menu](./screenshots/question_menu.png)
+![finished](./screenshots/finished.png)
+
 ## TODO
 - uhhhhhh I don't know
 
